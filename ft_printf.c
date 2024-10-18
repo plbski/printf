@@ -6,18 +6,15 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:43:15 by pbuet             #+#    #+#             */
-/*   Updated: 2024/10/15 12:20:50 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/10/18 14:44:18 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <assert.h>
 
 int	partition(char conversion, va_list *args)
 {
-	if (conversion == 'c') 
+	if (conversion == 'c')
 	{
 		return (ft_putchar(va_arg(*args, int)));
 	}
@@ -30,24 +27,24 @@ int	partition(char conversion, va_list *args)
 	else if (conversion == 'd' || conversion == 'i')
 		return (ft_putnbr(va_arg(*args, int), 0));
 	else if (conversion == 'u')
-		return (ft_putnbr_base(va_arg(*args, unsigned int),"0123456789",0 , 10));
+		return (ft_pnb(va_arg(*args, unsigned int), "0123456789", 0, 10));
 	else if (conversion == 'x')
-		return (ft_putnbr_base(va_arg(*args, unsigned int),"0123456789abcdef", 0, 16));
+		return (ft_pnb(va_arg(*args, unsigned int), "0123456789abcdef", 0, 16));
 	else if (conversion == 'X')
-		return (ft_putnbr_base(va_arg(*args, unsigned int),"0123456789ABCDEF", 0, 16));
-	else if (conversion == '%') 
+		return (ft_pnb(va_arg(*args, unsigned int), "0123456789ABCDEF", 0, 16));
+	else if (conversion == '%')
 		return (ft_putchar('%'));
 	return (0);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	va_start(args, format);
-	int i;
-	int count;
-	int test;
+	va_list		args;
+	int			i;
+	int			count;
+	int			test;
 
+	va_start(args, format);
 	i = 0;
 	count = 0;
 	if (!format)
@@ -62,7 +59,7 @@ int	ft_printf(const char *format, ...)
 				return (-1);
 			count += test;
 		}
-		else 
+		else
 			count += ft_putchar(format[i]);
 		i ++;
 	}

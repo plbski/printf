@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:23:44 by pbuet             #+#    #+#             */
-/*   Updated: 2024/10/15 12:14:49 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/10/18 14:39:08 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_putchar(char c)
 {
-	ssize_t written;
+	ssize_t	written;
+
 	written = write (1, &c, 1);
 	if (written == -1)
 		return (-1);
